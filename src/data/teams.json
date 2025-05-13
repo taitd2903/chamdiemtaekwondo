@@ -1,0 +1,21 @@
+[
+  {
+    "teamId": 0,
+    "teamName": "Đội A",
+    "members": [
+      { "memberId": 0, "name": "Nguyễn Văn A" },
+      { "memberId": 1, "name": "Trần Thị B" },
+      { "memberId": 2, "name": "Lê Văn C" }
+    ]
+  },
+  {
+    "teamId": 1,
+    "teamName": "Đội B",
+    "members": [
+      { "memberId": 0, "name": "Phạm Văn D" },
+      { "memberId": 1, "name": "Hoàng Thị E" },
+      { "memberId": 2, "name": "Đặng Văn F" },
+      { "memberId": 3, "name": "Lý Thị G" }
+    ]
+  }
+]
