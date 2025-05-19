@@ -1,16 +1,16 @@
 [
   {
     "teamId": 0,
-    "teamName": "Đội A",
+    "teamName": "Bảng A",
     "members": [
-      { "memberId": 0, "name": "Nguyễn Văn A" },
-      { "memberId": 1, "name": "Trần Thị B" },
-      { "memberId": 2, "name": "Lê Văn C" }
+      { "memberId": 0, "name": "Đội ngầu bá cháy" },
+      { "memberId": 1, "name": "Đội vip" },
+      { "memberId": 2, "name": "Đội oke" }
     ]
   },
   {
     "teamId": 1,
-    "teamName": "Đội B",
+    "teamName": "Bảng B",
     "members": [
       { "memberId": 0, "name": "Phạm Văn D" },
       { "memberId": 1, "name": "Hoàng Thị E" },

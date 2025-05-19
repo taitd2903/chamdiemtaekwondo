@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "teamId": 0,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Đội ngầu bá cháy",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Biểu diễn"
+  }
+]
