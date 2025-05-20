@@ -6,6 +6,7 @@ const { Text } = Typography;
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
+const filteredScores = scores.filter(score => score.teamId >= 0 && score.teamId <= 100);
 
   useEffect(() => {
     fetch("http://localhost:4000/api/scores")
@@ -21,7 +22,7 @@ const RankingByMember = () => {
   }, []);
 
   // Tính tổng điểm từng thành viên
-  const memberTotals = scores.reduce((acc, curr) => {
+  const memberTotals = filteredScores.reduce((acc, curr) => {
     const key = `${curr.teamId}-${curr.memberId}`;
 
     if (!acc[key]) {
@@ -57,14 +58,14 @@ const RankingByMember = () => {
       sorter: (a, b) => a.rank - b.rank,
     },
     {
-      title: "Đội",
+      title: "Bảng",
       dataIndex: "teamName",
       key: "teamName",
       render: (text) => <Text strong>{text}</Text>,
       width: 150,
     },
     {
-      title: "Thành viên",
+      title: "Đội",
       dataIndex: "memberName",
       key: "memberName",
       width: 180,

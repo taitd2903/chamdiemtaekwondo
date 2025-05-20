@@ -1,0 +1,32 @@
+[
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "members": [
+     { "memberId": 0, "name": "Phạm Văn D" },
+      { "memberId": 1, "name": "Hoàng Thị E" },
+      { "memberId": 2, "name": "Đặng Văn F" }
+    ]
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "members": [
+      { "memberId": 0, "name": "Phạm Văn D" },
+      { "memberId": 1, "name": "Hoàng Thị E" },
+      { "memberId": 2, "name": "Đặng Văn F" },
+      { "memberId": 3, "name": "Lý Thị G" }
+    ]
+  }
+  ,
+  {
+    "teamId": 303,
+    "teamName": "Bảng C",
+    "members": [
+      { "memberId": 0, "name": "Phạm Văn DE" },
+      { "memberId": 1, "name": "Hoàng Thị EE" },
+      { "memberId": 2, "name": "Đặng Văn FE" },
+      { "memberId": 3, "name": "Lý Thị GE" }
+    ]
+  }
+]

@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
       typeof judgeId !== "number" ||
       typeof score !== "number" ||
       score < 0 ||
-      score > 31 ||  // Mỗi tiêu chí tối đa là 20 điểm
+      // Mỗi tiêu chí tối đa là 20 điểm
       typeof teamName !== "string" ||
       typeof memberName !== "string" ||
       !criteria

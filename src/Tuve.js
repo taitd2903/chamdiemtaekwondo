@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { Table, InputNumber, Typography } from "antd";
-import teamData from "./data/quyentc.json";
+import teamData from "./data/tuve.json";
 
 const socket = io("http://localhost:4000");
 const { Text } = Typography;
 
 const maxScoresByCriteria = {
 
-  "Kỹ thuật": 40,
+  "Ứng dụng": 40,
   "Trình bày": 60,
  
 };

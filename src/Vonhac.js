@@ -153,7 +153,7 @@ const Chamdiem = () => {
     }));
     const footer = () => (
       <tr>
-        <td style={{ fontWeight: "bold", textAlign: "center" }}>Tổng điểm của đội</td>
+        <td style={{ fontWeight: "bold", textAlign: "center" }}>Tổng điểm </td>
         {members.map((member) => {
           const totalMemberScore = criteriaList.reduce((sum, criteria) => {
             const scoresByJudge = scores?.[teamId]?.[member.memberId]?.[criteria] || {};
