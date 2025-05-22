@@ -1,1 +1,119 @@
-[]
+[
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 0,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Đội ngầu bá cháy",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Biểu diễn"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 11,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 2,
+    "score": 1,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 2,
+    "score": 10,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 0,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Đội vip",
+    "judgeId": 2,
+    "score": 2,
+    "criteria": "Biểu diễn"
+  },
+  {
+    "teamId": 101,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Kỹ thuật"
+  },
+  {
+    "teamId": 201,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Ứng dụng"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 2,
+    "score": 2,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 3,
+    "score": 1,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 10,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 3,
+    "score": 10,
+    "criteria": "Kỹ Thuật"
+  }
+]

@@ -6,7 +6,6 @@ const { Text } = Typography;
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
-const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamId <= 100);
 
   useEffect(() => {
     fetch("http://localhost:4000/api/scores")
@@ -21,7 +20,10 @@ const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamI
       });
   }, []);
 
-  // Tính tổng điểm từng thành viên
+  // Lọc điểm trong khoảng teamId 300–400
+  const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamId <= 400);
+
+  // Gom nhóm và tính điểm theo tiêu chí
   const memberTotals = filteredScores.reduce((acc, curr) => {
     const key = `${curr.teamId}-${curr.memberId}`;
 
@@ -31,23 +33,35 @@ const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamI
         teamName: curr.teamName,
         memberId: curr.memberId,
         memberName: curr.memberName,
-        totalScore: 0,
+        soVan: 0,
+        kyThuat: 0,
       };
     }
-    acc[key].totalScore += curr.score;
+
+    if (curr.criteria === "Số ván") {
+      acc[key].soVan += curr.score;
+    } else if (curr.criteria === "Kỹ Thuật") {
+      acc[key].kyThuat += curr.score;
+    }
+
     return acc;
   }, {});
 
-  // Chuyển thành mảng và sắp xếp điểm giảm dần
-  const dataSource = Object.values(memberTotals).sort(
-    (a, b) => b.totalScore - a.totalScore
-  ).map((item, index) => ({
-    key: `${item.teamId}-${item.memberId}`,
-    rank: index + 1,
-    teamName: item.teamName,
-    memberName: item.memberName,
-    totalScore: item.totalScore,
-  }));
+  // Chuyển thành mảng và sắp xếp theo: Số ván ↓, rồi Kỹ Thuật ↓
+  const dataSource = Object.values(memberTotals)
+    .sort((a, b) => {
+      if (b.soVan !== a.soVan) return b.soVan - a.soVan;
+      return b.kyThuat - a.kyThuat;
+    })
+    .map((item, index) => ({
+      key: `${item.teamId}-${item.memberId}`,
+      rank: index + 1,
+      teamName: item.teamName,
+      memberName: item.memberName,
+      soVan: item.soVan,
+      kyThuat: item.kyThuat,
+      totalScore: item.soVan + item.kyThuat,
+    }));
 
   const columns = [
     {
@@ -55,7 +69,6 @@ const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamI
       dataIndex: "rank",
       key: "rank",
       width: 80,
-      sorter: (a, b) => a.rank - b.rank,
     },
     {
       title: "Bảng",
@@ -71,10 +84,21 @@ const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamI
       width: 180,
     },
     {
+      title: "Số ván",
+      dataIndex: "soVan",
+      key: "soVan",
+      width: 100,
+    },
+    {
+      title: "Kỹ Thuật",
+      dataIndex: "kyThuat",
+      key: "kyThuat",
+      width: 100,
+    },
+    {
       title: "Tổng điểm",
       dataIndex: "totalScore",
       key: "totalScore",
-      sorter: (a, b) => a.totalScore - b.totalScore,
       width: 120,
     },
   ];
@@ -82,8 +106,8 @@ const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamI
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
   return (
-    <div style={{ maxWidth: 600, margin: "20px auto" }}>
-      <h2>Bảng xếp hạng thành viên theo tổng điểm</h2>
+    <div style={{ maxWidth: 800, margin: "20px auto" }}>
+      <h2>Bảng xếp hạng công phá (ưu tiên Số ván)</h2>
       <Table
         columns={columns}
         dataSource={dataSource}
