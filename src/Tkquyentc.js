@@ -6,7 +6,7 @@ const { Text } = Typography;
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
-const filteredScores = scores.filter(score => score.teamId >= 101 && score.teamId <= 200);
+
   useEffect(() => {
     fetch("http://localhost:4000/api/scores")
       .then((res) => res.json())
@@ -20,10 +20,12 @@ const filteredScores = scores.filter(score => score.teamId >= 101 && score.teamI
       });
   }, []);
 
-  // Tính tổng điểm từng thành viên
-const memberTotals = filteredScores.reduce((acc, curr) => {
-    const key = `${curr.teamId}-${curr.memberId}`;
+  // Chỉ lấy teamId từ 101 đến 200 (ví dụ: bảng C, D,...)
+  const filteredScores = scores.filter(score => score.teamId >= 101 && score.teamId <= 200);
 
+  // Tổng điểm theo memberId trong mỗi teamId
+  const memberTotals = filteredScores.reduce((acc, curr) => {
+    const key = `${curr.teamId}-${curr.memberId}`;
     if (!acc[key]) {
       acc[key] = {
         teamId: curr.teamId,
@@ -37,16 +39,17 @@ const memberTotals = filteredScores.reduce((acc, curr) => {
     return acc;
   }, {});
 
-  // Chuyển thành mảng và sắp xếp điểm giảm dần
-  const dataSource = Object.values(memberTotals).sort(
-    (a, b) => b.totalScore - a.totalScore
-  ).map((item, index) => ({
-    key: `${item.teamId}-${item.memberId}`,
-    rank: index + 1,
-    teamName: item.teamName,
-    memberName: item.memberName,
-    totalScore: item.totalScore,
-  }));
+  // Nhóm theo bảng (teamId)
+  const groupedByTeam = {};
+  Object.values(memberTotals).forEach((item) => {
+    if (!groupedByTeam[item.teamId]) {
+      groupedByTeam[item.teamId] = {
+        teamName: item.teamName,
+        members: [],
+      };
+    }
+    groupedByTeam[item.teamId].members.push(item);
+  });
 
   const columns = [
     {
@@ -54,14 +57,6 @@ const memberTotals = filteredScores.reduce((acc, curr) => {
       dataIndex: "rank",
       key: "rank",
       width: 80,
-      sorter: (a, b) => a.rank - b.rank,
-    },
-    {
-      title: "Đội",
-      dataIndex: "teamName",
-      key: "teamName",
-      render: (text) => <Text strong>{text}</Text>,
-      width: 150,
     },
     {
       title: "Thành viên",
@@ -81,15 +76,35 @@ const memberTotals = filteredScores.reduce((acc, curr) => {
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
   return (
-    <div style={{ maxWidth: 600, margin: "20px auto" }}>
-      <h2>Bảng xếp hạng thành viên theo tổng điểm</h2>
-      <Table
-        columns={columns}
-        dataSource={dataSource}
-        pagination={false}
-        bordered
-        size="middle"
-      />
+    <div style={{ maxWidth: 800, margin: "20px auto" }}>
+      <h2>Bảng xếp hạng thành viên theo từng bảng (teamId 101–200)</h2>
+
+      {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
+        const sortedMembers = teamData.members
+          .sort((a, b) => b.totalScore - a.totalScore)
+          .map((member, index) => ({
+            key: `${teamId}-${member.memberId}`,
+            rank: index + 1,
+            memberName: member.memberName,
+            totalScore: member.totalScore,
+          }));
+
+        return (
+          <div key={teamId} style={{ marginBottom: 40 }}>
+            <Text strong style={{ fontSize: 18 }}>
+              🏆 {teamData.teamName}
+            </Text>
+            <Table
+              columns={columns}
+              dataSource={sortedMembers}
+              pagination={false}
+              bordered
+              size="middle"
+              style={{ marginTop: 10 }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

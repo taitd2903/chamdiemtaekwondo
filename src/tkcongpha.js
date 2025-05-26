@@ -20,10 +20,9 @@ const RankingByMember = () => {
       });
   }, []);
 
-  // Lọc điểm trong khoảng teamId 300–400
   const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamId <= 400);
 
-  // Gom nhóm và tính điểm theo tiêu chí
+  // Gom điểm theo từng thành viên
   const memberTotals = filteredScores.reduce((acc, curr) => {
     const key = `${curr.teamId}-${curr.memberId}`;
 
@@ -47,21 +46,17 @@ const RankingByMember = () => {
     return acc;
   }, {});
 
-  // Chuyển thành mảng và sắp xếp theo: Số ván ↓, rồi Kỹ Thuật ↓
-  const dataSource = Object.values(memberTotals)
-    .sort((a, b) => {
-      if (b.soVan !== a.soVan) return b.soVan - a.soVan;
-      return b.kyThuat - a.kyThuat;
-    })
-    .map((item, index) => ({
-      key: `${item.teamId}-${item.memberId}`,
-      rank: index + 1,
-      teamName: item.teamName,
-      memberName: item.memberName,
-      soVan: item.soVan,
-      kyThuat: item.kyThuat,
-      totalScore: item.soVan + item.kyThuat,
-    }));
+  // Nhóm theo bảng (teamId)
+  const groupedByTeam = {};
+  Object.values(memberTotals).forEach((item) => {
+    if (!groupedByTeam[item.teamId]) {
+      groupedByTeam[item.teamId] = {
+        teamName: item.teamName,
+        members: [],
+      };
+    }
+    groupedByTeam[item.teamId].members.push(item);
+  });
 
   const columns = [
     {
@@ -71,14 +66,7 @@ const RankingByMember = () => {
       width: 80,
     },
     {
-      title: "Bảng",
-      dataIndex: "teamName",
-      key: "teamName",
-      render: (text) => <Text strong>{text}</Text>,
-      width: 150,
-    },
-    {
-      title: "Đội",
+      title: "Thành viên",
       dataIndex: "memberName",
       key: "memberName",
       width: 180,
@@ -107,14 +95,39 @@ const RankingByMember = () => {
 
   return (
     <div style={{ maxWidth: 800, margin: "20px auto" }}>
-      <h2>Bảng xếp hạng công phá (ưu tiên Số ván)</h2>
-      <Table
-        columns={columns}
-        dataSource={dataSource}
-        pagination={false}
-        bordered
-        size="middle"
-      />
+      <h2>Bảng xếp hạng Công phá (theo từng bảng)</h2>
+
+      {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
+        const sortedMembers = teamData.members
+          .sort((a, b) => {
+            if (b.soVan !== a.soVan) return b.soVan - a.soVan;
+            return b.kyThuat - a.kyThuat;
+          })
+          .map((member, index) => ({
+            key: `${teamId}-${member.memberId}`,
+            rank: index + 1,
+            memberName: member.memberName,
+            soVan: member.soVan,
+            kyThuat: member.kyThuat,
+            totalScore: member.soVan + member.kyThuat,
+          }));
+
+        return (
+          <div key={teamId} style={{ marginBottom: 40 }}>
+            <Text strong style={{ fontSize: 18 }}>
+              💥 Bảng {teamData.teamName}
+            </Text>
+            <Table
+              columns={columns}
+              dataSource={sortedMembers}
+              pagination={false}
+              bordered
+              size="middle"
+              style={{ marginTop: 10 }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

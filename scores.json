@@ -1,57 +1,93 @@
 [
   {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 0,
-    "memberName": "Phạm Văn D",
-    "judgeId": 1,
-    "score": 2,
-    "criteria": "Số ván"
-  },
-  {
-    "teamId": 0,
-    "teamName": "Bảng A",
-    "memberId": 0,
-    "memberName": "Đội ngầu bá cháy",
-    "judgeId": 1,
-    "score": 1,
-    "criteria": "Biểu diễn"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 0,
-    "memberName": "Phạm Văn D",
-    "judgeId": 1,
-    "score": 11,
-    "criteria": "Kỹ Thuật"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 1,
-    "memberName": "Hoàng Thị E",
-    "judgeId": 2,
-    "score": 1,
-    "criteria": "Số ván"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 1,
-    "memberName": "Hoàng Thị E",
-    "judgeId": 2,
-    "score": 10,
-    "criteria": "Kỹ Thuật"
-  },
-  {
     "teamId": 0,
     "teamName": "Bảng A",
     "memberId": 1,
     "memberName": "Đội vip",
-    "judgeId": 2,
-    "score": 2,
+    "judgeId": 1,
+    "score": 0,
+    "criteria": "Tự vệ"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 14,
+    "criteria": "Ứng dụng"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Đội ngầu bá cháy",
+    "judgeId": 1,
+    "score": 3,
     "criteria": "Biểu diễn"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Đội ngầu bá cháy",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Tự vệ"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Đội ngầu bá cháy",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Công phá"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Đội vip",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Biểu diễn"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đội oke",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Tự vệ"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đội oke",
+    "judgeId": 1,
+    "score": 5,
+    "criteria": "Công phá"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Đội siêu đỉnh",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Công phá"
+  },
+  {
+    "teamId": 1,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Đội siêu đỉnh",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Tự vệ"
   },
   {
     "teamId": 101,
@@ -59,7 +95,97 @@
     "memberId": 0,
     "memberName": "Phạm Văn D",
     "judgeId": 1,
+    "score": 0,
+    "criteria": "Kỹ thuật"
+  },
+  {
+    "teamId": 101,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
     "score": 1,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 101,
+    "teamName": "Bảng A",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Kỹ thuật"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Kỹ thuật"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 4,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Kỹ thuật"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Kỹ thuật"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Lý Thị G",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 102,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Lý Thị G",
+    "judgeId": 1,
+    "score": 3,
     "criteria": "Kỹ thuật"
   },
   {
@@ -72,48 +198,228 @@
     "criteria": "Ứng dụng"
   },
   {
+    "teamId": 201,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 201,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 201,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 1,
+    "criteria": "Ứng dụng"
+  },
+  {
+    "teamId": 201,
+    "teamName": "Bảng A",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 5,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 201,
+    "teamName": "Bảng A",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Ứng dụng"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Ứng dụng"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Lý Thị G",
+    "judgeId": 1,
+    "score": 2,
+    "criteria": "Trình bày"
+  },
+  {
+    "teamId": 202,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Lý Thị G",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Ứng dụng"
+  },
+  {
     "teamId": 301,
     "teamName": "Bảng A",
     "memberId": 0,
     "memberName": "Phạm Văn D",
-    "judgeId": 2,
+    "judgeId": 1,
+    "score": 5,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 4,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 5,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 4,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 301,
+    "teamName": "Bảng A",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 9,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 0,
+    "memberName": "Phạm Văn D",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 0,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 1,
+    "memberName": "Hoàng Thị E",
+    "judgeId": 1,
+    "score": 4,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Lý Thị G",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Kỹ Thuật"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 3,
+    "memberName": "Lý Thị G",
+    "judgeId": 1,
+    "score": 3,
+    "criteria": "Số ván"
+  },
+  {
+    "teamId": 302,
+    "teamName": "Bảng B",
+    "memberId": 2,
+    "memberName": "Đặng Văn F",
+    "judgeId": 1,
     "score": 2,
     "criteria": "Số ván"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 1,
-    "memberName": "Hoàng Thị E",
-    "judgeId": 1,
-    "score": 1,
-    "criteria": "Số ván"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 1,
-    "memberName": "Hoàng Thị E",
-    "judgeId": 3,
-    "score": 1,
-    "criteria": "Số ván"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 1,
-    "memberName": "Hoàng Thị E",
-    "judgeId": 1,
-    "score": 10,
-    "criteria": "Kỹ Thuật"
-  },
-  {
-    "teamId": 301,
-    "teamName": "Bảng A",
-    "memberId": 1,
-    "memberName": "Hoàng Thị E",
-    "judgeId": 3,
-    "score": 10,
-    "criteria": "Kỹ Thuật"
   }
 ]

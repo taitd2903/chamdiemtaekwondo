@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { Table, InputNumber, Typography } from "antd";
 import teamData from "./data/teams.json";
-
+import { useParams } from "react-router-dom";
 const socket = io("http://localhost:4000");
 const { Text } = Typography;
 
@@ -17,6 +17,8 @@ const maxScoresByCriteria = {
 const Chamdiem = () => {
   const [scores, setScores] = useState({});
   const [selectedTeamId, setSelectedTeamId] = useState(null);
+const { giamdinh } = useParams();
+const currentJudgeId = parseInt(giamdinh, 10);
 
   useEffect(() => {
     const fetchScores = async () => {
@@ -72,7 +74,7 @@ const Chamdiem = () => {
   }, []);
 
   const handleScoreChange = (teamId, memberId, judgeId, criteria, value) => {
-    if (value === null) return; // bỏ qua nếu xoá input
+    if (value === null) return;
     const score = parseInt(value, 10);
     if (isNaN(score) || score < 0 || score > maxScoresByCriteria[criteria]) return;
 
@@ -115,17 +117,20 @@ const Chamdiem = () => {
             <>
               <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
                 {[1, 2, 3].map((judgeId) => (
-                  <InputNumber
-                    key={judgeId}
-                    min={0}
-                    max={maxScoresByCriteria[criteria]}
-                    placeholder={`G${judgeId}`}
-                    value={scores?.[teamId]?.[member.memberId]?.[criteria]?.[judgeId] ?? undefined}
-                    onChange={(value) =>
-                      handleScoreChange(teamId, member.memberId, judgeId, criteria, value)
-                    }
-                    style={{ width: 60 }}
-                  />
+        <InputNumber
+  key={judgeId}
+  min={0}
+  max={maxScoresByCriteria[criteria]}
+  placeholder={`G${judgeId}`}
+  value={scores?.[teamId]?.[member.memberId]?.[criteria]?.[judgeId] ?? undefined}
+  onChange={(value) =>
+    judgeId === currentJudgeId &&
+    handleScoreChange(teamId, member.memberId, judgeId, criteria, value)
+  }
+  style={{ width: 60 }}
+  disabled={judgeId !== currentJudgeId}
+/>
+
                 ))}
               </div>
               <div style={{ marginTop: 6, textAlign: "center" }}>
@@ -194,7 +199,7 @@ const Chamdiem = () => {
 
   return (
     <div style={{ padding: 20 }}>
-      <h2>Chấm điểm từng đội</h2>
+      {/* <h2>Chấm điểm từng đội</h2> */}
 
       <label>
         Chọn bảng:&nbsp;

@@ -14,7 +14,7 @@ const ResetScoresButton = ({ onReset }) => {
       .then((res) => res.json())
       .then((data) => {
         message.success(data.message || "Đã xóa điểm thành công!");
-        if (onReset) onReset(); // callback nếu cần reload data
+        if (onReset) onReset(); 
       })
       .catch(() => {
         message.error("Lỗi khi xóa điểm!");
