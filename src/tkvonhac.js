@@ -6,8 +6,6 @@ const { Text } = Typography;
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Lọc bảng A, B theo teamId
   const filteredScores = scores.filter(score => score.teamId >= 0 && score.teamId <= 100);
 
   useEffect(() => {
@@ -23,7 +21,6 @@ const RankingByMember = () => {
       });
   }, []);
 
-  // B1: Tổng điểm theo teamId + memberId
   const memberTotals = filteredScores.reduce((acc, curr) => {
     const key = `${curr.teamId}-${curr.memberId}`;
     if (!acc[key]) {
@@ -32,6 +29,7 @@ const RankingByMember = () => {
         teamName: curr.teamName,
         memberId: curr.memberId,
         memberName: curr.memberName,
+        unit: curr.unit || "",   
         totalScore: 0,
       };
     }
@@ -39,7 +37,7 @@ const RankingByMember = () => {
     return acc;
   }, {});
 
-  // B2: Nhóm theo teamId (tức bảng)
+
   const groupedByTeam = {};
   Object.values(memberTotals).forEach((item) => {
     if (!groupedByTeam[item.teamId]) {
@@ -51,7 +49,6 @@ const RankingByMember = () => {
     groupedByTeam[item.teamId].members.push(item);
   });
 
-  // Cột bảng xếp hạng
   const columns = [
     {
       title: "Xếp hạng",
@@ -64,6 +61,12 @@ const RankingByMember = () => {
       dataIndex: "memberName",
       key: "memberName",
       width: 180,
+    },
+    {
+      title: "Đơn vị",
+      dataIndex: "unit",
+      key: "unit",
+      width: 120,
     },
     {
       title: "Tổng điểm",
@@ -87,6 +90,7 @@ const RankingByMember = () => {
             key: `${teamId}-${member.memberId}`,
             rank: index + 1,
             memberName: member.memberName,
+            unit: member.unit,  
             totalScore: member.totalScore,
           }));
 

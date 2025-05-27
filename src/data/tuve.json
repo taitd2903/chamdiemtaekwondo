@@ -3,19 +3,19 @@
     "teamId": 201,
     "teamName": "Bảng A",
     "members": [
-     { "memberId": 0, "name": "Phạm Văn D" },
-      { "memberId": 1, "name": "Hoàng Thị E" },
-      { "memberId": 2, "name": "Đặng Văn F" }
+     { "memberId": 0, "name": "Phạm Văn D" ,"unit":"Thân Tâm" },
+      { "memberId": 1, "name": "Hoàng Thị E","unit":"Quyết Tâm" },
+      { "memberId": 2, "name": "Đặng Văn F","unit":"Quyết Tâm" }
     ]
   },
   {
     "teamId": 202,
     "teamName": "Bảng B",
     "members": [
-      { "memberId": 0, "name": "Phạm Văn D" },
-      { "memberId": 1, "name": "Hoàng Thị E" },
-      { "memberId": 2, "name": "Đặng Văn F" },
-      { "memberId": 3, "name": "Lý Thị G" }
+      { "memberId": 0, "name": "Phạm Văn D","unit":"Quyết Tâm" },
+      { "memberId": 1, "name": "Hoàng Thị E","unit":"Quyết Tâm" },
+      { "memberId": 2, "name": "Đặng Văn F","unit":"Thân Tâm" },
+      { "memberId": 3, "name": "Lý Thị G", "unit":"Quyết Tâm" }
     ]
   }
 ]

@@ -3,19 +3,19 @@
     "teamId": 0,
     "teamName": "Bảng A",
     "members": [
-      { "memberId": 0, "name": "Đội ngầu bá cháy" },
-      { "memberId": 1, "name": "Đội vip" },
-      { "memberId": 2, "name": "Đội oke" }
+      { "memberId": 0, "name": "Đội ngầu bá cháy","unit":"Thân Tâm" },
+      { "memberId": 1, "name": "Đội vip" ,"unit":"Thân Tâm" },
+      { "memberId": 2, "name": "Đội oke" ,"unit":"Thân Tâm" }
     ]
   },
   {
     "teamId": 1,
     "teamName": "Bảng B",
     "members": [
-     { "memberId": 0, "name": "Đội ngầu bá cháy" },
-      { "memberId": 1, "name": "Đội vip" },
-      { "memberId": 2, "name": "Đội oke" },
-      { "memberId": 3, "name": "Đội siêu đỉnh" }
+     { "memberId": 0, "name": "Đội ngầu bá cháy" ,"unit":"Thân Tâm" },
+      { "memberId": 1, "name": "Đội vip" ,"unit":"Thân Tâm" },
+      { "memberId": 2, "name": "Đội oke" ,"unit":"Thân Tâm" },
+      { "memberId": 3, "name": "Đội siêu đỉnh" ,"unit":"Thân Tâm" }
     ]
   }
 ]

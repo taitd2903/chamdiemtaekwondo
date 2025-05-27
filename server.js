@@ -54,7 +54,7 @@ io.on("connection", (socket) => {
   console.log("✅ Giám khảo kết nối");
 
   socket.on("score", (data) => {
-    const { teamId, memberId, judgeId, score, criteria, teamName, memberName } = data;
+    const { teamId, memberId, judgeId, score, criteria, teamName, memberName , unit } = data;
 
     // Kiểm tra dữ liệu hợp lệ
     if (
@@ -66,6 +66,7 @@ io.on("connection", (socket) => {
       // Mỗi tiêu chí tối đa là 20 điểm
       typeof teamName !== "string" ||
       typeof memberName !== "string" ||
+     
       !criteria
     ) {
       return socket.emit("error", { message: "Dữ liệu không hợp lệ" });
@@ -77,13 +78,14 @@ io.on("connection", (socket) => {
         entry.teamId === teamId &&
         entry.memberId === memberId &&
         entry.judgeId === judgeId &&
-        entry.criteria === criteria
+        entry.criteria === criteria&&
+         entry.unit === unit
     );
 
     if (existingIndex !== -1) {
       scores[existingIndex].score = score;
     } else {
-      scores.push({ teamId, teamName, memberId, memberName, judgeId, score, criteria });
+      scores.push({ teamId, teamName, memberId, memberName, judgeId, score, criteria,unit  });
     }
 
     writeScoresToFile(scores);
@@ -105,6 +107,7 @@ io.on("connection", (socket) => {
       memberId,
       memberName,
       judgeId,
+      unit,
       score,
       totalScore,
       judgesCount: thisMemberScores.length,
@@ -112,7 +115,7 @@ io.on("connection", (socket) => {
     });
 
     console.log(
-      `✅ ${teamName} - ${memberName} được Giám khảo ${judgeId} chấm ${score} điểm cho tiêu chí ${criteria}.`
+      `✅ ${teamName}- ${unit} - ${memberName} được Giám khảo ${judgeId} chấm ${score} điểm cho tiêu chí ${criteria}.`
     );
   });
 

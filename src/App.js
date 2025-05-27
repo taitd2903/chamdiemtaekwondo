@@ -81,7 +81,7 @@ const App = () => {
           icon={<MenuOutlined style={{ fontSize: 24 }} />}
           onClick={showDrawer}
         />
-        <h1 style={{ margin: 0, fontWeight: "bolder" }}>FUTURE WARRIOR TAEKWONDO FESTIVAL</h1>
+  
         <Select
           value={giamdinh}
           onChange={handleChangeGiamDinh}
@@ -107,8 +107,10 @@ const App = () => {
           items={menuItems}
         />
       </Drawer>
-
-      <main style={{ padding: 20 }}>
+ 
+<div className="background">
+  </div>
+      <main  style={{ padding: 20 }}>
         <Routes>
           <Route path="vonhac/:giamdinh" element={<Vonhac />} />
           <Route path="quyentc/:giamdinh" element={<Quyen />} />

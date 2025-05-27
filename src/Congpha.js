@@ -28,7 +28,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
 
         const structuredScores = {};
 
-        data.forEach(({ teamId, memberId, criteria, judgeId, score }) => {
+        data.forEach(({ teamId, memberId, criteria, judgeId, score  }) => {
           if (!structuredScores[teamId]) structuredScores[teamId] = {};
           if (!structuredScores[teamId][memberId]) structuredScores[teamId][memberId] = {};
           if (!structuredScores[teamId][memberId][criteria]) structuredScores[teamId][memberId][criteria] = {};
@@ -73,7 +73,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
     };
   }, []);
 
-  const handleScoreChange = (teamId, memberId, judgeId, criteria, value) => {
+  const handleScoreChange = (teamId, memberId, judgeId, criteria, value,unit) => {
     if (value === null) return;
     const score = parseInt(value, 10);
     if (isNaN(score) || score < 0 || score > maxScoresByCriteria[criteria]) return;
@@ -88,6 +88,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
       judgeId,
       criteria,
       score,
+      unit,
       teamName: team.teamName,
       memberName: member.name,
     });
@@ -107,12 +108,18 @@ const currentJudgeId = parseInt(giamdinh, 10);
         render: (text) => <Text strong>{text}</Text>,
       },
       ...members.map((member) => ({
-        title: member.name,
+          title: (
+    <div style={{ textAlign: "center" }}>
+      <div>{member.name}</div>
+      <div style={{ fontSize: 12, color: "#888" }}>{member.unit}</div>
+    </div>
+  ),
         dataIndex: member.memberId,
         key: member.memberId,
         width: 260,
         render: (_, record) => {
           const criteria = record.criteria;
+           const unit = member.unit; 
           return (
             <>
               <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
@@ -125,7 +132,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
   value={scores?.[teamId]?.[member.memberId]?.[criteria]?.[judgeId] ?? undefined}
   onChange={(value) =>
     judgeId === currentJudgeId &&
-    handleScoreChange(teamId, member.memberId, judgeId, criteria, value)
+    handleScoreChange(teamId, member.memberId, judgeId, criteria, value,unit)
   }
   style={{ width: 60 }}
   disabled={judgeId !== currentJudgeId}

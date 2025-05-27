@@ -32,6 +32,7 @@ const RankingByMember = () => {
         teamName: curr.teamName,
         memberId: curr.memberId,
         memberName: curr.memberName,
+        unit: curr.unit || "", 
         totalScore: 0,
       };
     }
@@ -64,6 +65,12 @@ const RankingByMember = () => {
       key: "memberName",
       width: 180,
     },
+      {
+      title: "Đơn vị",
+      dataIndex: "unit",
+      key: "unit",
+      width: 120,
+    },
     {
       title: "Tổng điểm",
       dataIndex: "totalScore",
@@ -86,6 +93,7 @@ const RankingByMember = () => {
             key: `${teamId}-${member.memberId}`,
             rank: index + 1,
             memberName: member.memberName,
+              unit: member.unit, 
             totalScore: member.totalScore,
           }));
 
