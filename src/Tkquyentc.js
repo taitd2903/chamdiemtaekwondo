@@ -1,11 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Table, Typography, Spin } from "antd";
-
+import * as XLSX from "xlsx";
+import { Button } from "antd";
 const { Text } = Typography;
 
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
+const handleExportExcel = () => {
+  const exportData = [];
+
+  Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
+    // Thêm dòng tiêu đề team
+    exportData.push({
+      STT: "",
+      "Thành viên": `🏆 ${teamData.teamName}`,
+      "Đơn vị": "",
+      "Tổng điểm": "",
+    });
+
+    // Thêm các thành viên
+    teamData.members
+      .sort((a, b) => b.totalScore - a.totalScore)
+      .forEach((member, index) => {
+        exportData.push({
+          STT: index + 1,
+          "Thành viên": member.memberName,
+          "Đơn vị": member.unit,
+          "Tổng điểm": member.totalScore,
+        });
+      });
+
+    // Thêm dòng trắng sau mỗi team
+    exportData.push({});
+  });
+
+  const worksheet = XLSX.utils.json_to_sheet(exportData);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "XepHangThanhVien");
+  XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
+};
 
   useEffect(() => {
     fetch("http://localhost:4000/api/scores")
@@ -85,6 +119,13 @@ const RankingByMember = () => {
   return (
     <div style={{ maxWidth: 800, margin: "20px auto" }}>
       <h2>Bảng xếp hạng thành viên theo từng bảng (teamId 101–200)</h2>
+<Button
+  type="primary"
+  onClick={handleExportExcel}
+  style={{ marginBottom: 20 }}
+>
+  📤 Xuất Excel
+</Button>
 
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
@@ -98,6 +139,7 @@ const RankingByMember = () => {
           }));
 
         return (
+          
           <div key={teamId} style={{ marginBottom: 40 }}>
             <Text strong style={{ fontSize: 18 }}>
               🏆 {teamData.teamName}

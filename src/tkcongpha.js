@@ -1,11 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { Table, Typography, Spin } from "antd";
-
+import * as XLSX from "xlsx";
+import { Button } from "antd";
 const { Text } = Typography;
 
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
+const handleExportExcel = () => {
+  const exportData = [];
+
+  Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
+    // Thêm tiêu đề bảng
+    exportData.push({
+      STT: "",
+      "Thành viên": `💥 Bảng ${teamData.teamName}`,
+      "Đơn vị": "",
+      "Số ván": "",
+      "Kỹ thuật": "",
+      "Tổng điểm": "",
+    });
+
+    // Thêm từng thành viên đã sắp xếp
+    teamData.members
+      .sort((a, b) => {
+        if (b.soVan !== a.soVan) return b.soVan - a.soVan;
+        return b.kyThuat - a.kyThuat;
+      })
+      .forEach((member, index) => {
+        exportData.push({
+          STT: index + 1,
+          "Thành viên": member.memberName,
+          "Đơn vị": member.unit,
+          "Số ván": member.soVan,
+          "Kỹ thuật": member.kyThuat,
+          "Tổng điểm": member.soVan + member.kyThuat,
+        });
+      });
+
+    // Dòng trống để phân cách giữa các bảng
+    exportData.push({});
+  });
+
+  const worksheet = XLSX.utils.json_to_sheet(exportData);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "BangXepHang");
+  XLSX.writeFile(workbook, "XepHang_CongPha.xlsx");
+};
 
   useEffect(() => {
     fetch("http://localhost:4000/api/scores")
@@ -103,7 +144,13 @@ const RankingByMember = () => {
   return (
     <div style={{ maxWidth: 800, margin: "20px auto" }}>
       <h2>Bảng xếp hạng Công phá (theo từng bảng)</h2>
-
+<Button
+  type="primary"
+  onClick={handleExportExcel}
+  style={{ marginBottom: 20 }}
+>
+  📤 Xuất Excel
+</Button>
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
           .sort((a, b) => {
