@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { Table, InputNumber, Typography } from "antd";
 import teamData from "./data/teams.json";
 import { useParams } from "react-router-dom";
-const socket = io("http://localhost:4000");
+const socket = io("https://quizzserver-3ylm.onrender.com");
 const { Text } = Typography;
 
 const maxScoresByCriteria = {
@@ -23,7 +23,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/scores");
+        const res = await fetch("https://quizzserver-3ylm.onrender.com/api/scores");
         const data = await res.json();
 
         const structuredScores = {};

@@ -41,7 +41,7 @@ const handleExportExcel = () => {
   XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
 };
   useEffect(() => {
-    fetch("http://localhost:4000/api/scores")
+    fetch("https://quizzserver-3ylm.onrender.com/api/scores")
       .then((res) => res.json())
       .then((data) => {
         setScores(data);

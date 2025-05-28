@@ -8,7 +8,7 @@ const ResetScoresButton = ({ onReset }) => {
     if (!window.confirm("Bạn có chắc muốn xóa hết tất cả điểm đã chấm không?")) return;
 
     setLoading(true);
-    fetch("http://localhost:4000/api/reset-scores", {
+    fetch("https://quizzserver-3ylm.onrender.com/api/reset-scores", {
       method: "POST",
     })
       .then((res) => res.json())
