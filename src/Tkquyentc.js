@@ -7,39 +7,35 @@ const { Text } = Typography;
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
-const handleExportExcel = () => {
-  const exportData = [];
+  const handleExportExcel = () => {
+    const exportData = [];
 
-  Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
-    // Thêm dòng tiêu đề team
-    exportData.push({
-      STT: "",
-      "Thành viên": `🏆 ${teamData.teamName}`,
-      "Đơn vị": "",
-      "Tổng điểm": "",
-    });
-
-    // Thêm các thành viên
-    teamData.members
-      .sort((a, b) => b.totalScore - a.totalScore)
-      .forEach((member, index) => {
-        exportData.push({
-          STT: index + 1,
-          "Thành viên": member.memberName,
-          "Đơn vị": member.unit,
-          "Tổng điểm": member.totalScore,
-        });
+    Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
+      exportData.push({
+        "Tên": `🏆 ${teamData.teamName}`,
+        "Đơn vị": "",
+        "Rank": "",
       });
 
-    // Thêm dòng trắng sau mỗi team
-    exportData.push({});
-  });
+      teamData.members
+        .sort((a, b) => b.totalScore - a.totalScore)
+        .forEach((member, index) => {
+          exportData.push({
+            "Tên": member.memberName,
+            "Đơn vị": member.unit,
+          // "Tổng điểm": member.totalScore,
+            "Rank": index + 1,
+          });
+        });
+      exportData.push({});
+    });
 
-  const worksheet = XLSX.utils.json_to_sheet(exportData);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, "XepHangThanhVien");
-  XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
-};
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "XepHangThanhVien");
+    XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
+  };
+
 
   useEffect(() => {
     fetch("https://quizzserver-3ylm.onrender.com/api/scores")
@@ -66,7 +62,7 @@ const handleExportExcel = () => {
         teamName: curr.teamName,
         memberId: curr.memberId,
         memberName: curr.memberName,
-          unit: curr.unit || "", 
+        unit: curr.unit || "",
         totalScore: 0,
       };
     }
@@ -99,7 +95,7 @@ const handleExportExcel = () => {
       key: "memberName",
       width: 180,
     },
-       {
+    {
       title: "Đơn vị",
       dataIndex: "unit",
       key: "unit",
@@ -119,13 +115,13 @@ const handleExportExcel = () => {
   return (
     <div style={{ maxWidth: 800, margin: "20px auto" }}>
       <h2>Bảng xếp hạng thành viên theo từng bảng (teamId 101–200)</h2>
-<Button
-  type="primary"
-  onClick={handleExportExcel}
-  style={{ marginBottom: 20 }}
->
-  📤 Xuất Excel
-</Button>
+      <Button
+        type="primary"
+        onClick={handleExportExcel}
+        style={{ marginBottom: 20 }}
+      >
+        📤 Xuất Excel
+      </Button>
 
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
@@ -134,12 +130,12 @@ const handleExportExcel = () => {
             key: `${teamId}-${member.memberId}`,
             rank: index + 1,
             memberName: member.memberName,
-               unit: member.unit, 
+            unit: member.unit,
             totalScore: member.totalScore,
           }));
 
         return (
-          
+
           <div key={teamId} style={{ marginBottom: 40 }}>
             <Text strong style={{ fontSize: 18 }}>
               🏆 {teamData.teamName}

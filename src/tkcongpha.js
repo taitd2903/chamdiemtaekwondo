@@ -13,12 +13,12 @@ const handleExportExcel = () => {
   Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
     // Thêm tiêu đề bảng
     exportData.push({
-      STT: "",
       "Thành viên": `💥 Bảng ${teamData.teamName}`,
       "Đơn vị": "",
-      "Số ván": "",
-      "Kỹ thuật": "",
-      "Tổng điểm": "",
+      // "Số ván": "",
+      // "Kỹ thuật": "",
+      // "Tổng điểm": "",
+      "Rank": "",
     });
 
     // Thêm từng thành viên đã sắp xếp
@@ -29,12 +29,12 @@ const handleExportExcel = () => {
       })
       .forEach((member, index) => {
         exportData.push({
-          STT: index + 1,
           "Thành viên": member.memberName,
           "Đơn vị": member.unit,
-          "Số ván": member.soVan,
-          "Kỹ thuật": member.kyThuat,
-          "Tổng điểm": member.soVan + member.kyThuat,
+          // "Số ván": member.soVan,
+          // "Kỹ thuật": member.kyThuat,
+          // "Tổng điểm": member.soVan + member.kyThuat,
+           "Rank": index + 1,
         });
       });
 

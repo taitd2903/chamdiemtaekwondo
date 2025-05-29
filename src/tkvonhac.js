@@ -8,39 +8,33 @@ const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
   const filteredScores = scores.filter(score => score.teamId >= 0 && score.teamId <= 100);
-const handleExportExcel = () => {
-  const exportData = [];
+  const handleExportExcel = () => {
+    const exportData = [];
 
-  Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
-    // Thêm dòng tiêu đề team
-    exportData.push({
-      STT: "",
-      "Thành viên": `🏆 ${teamData.teamName}`,
-      "Đơn vị": "",
-      "Tổng điểm": "",
-    });
-
-    // Thêm các thành viên
-    teamData.members
-      .sort((a, b) => b.totalScore - a.totalScore)
-      .forEach((member, index) => {
-        exportData.push({
-          STT: index + 1,
-          "Thành viên": member.memberName,
-          "Đơn vị": member.unit,
-          "Tổng điểm": member.totalScore,
-        });
+    Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
+      exportData.push({
+        "Đội": `🏆 ${teamData.teamName}`,
+        "Đơn vị": "",
+        "Rank": "",
       });
 
-    // Thêm dòng trắng sau mỗi team
-    exportData.push({});
-  });
+      teamData.members
+        .sort((a, b) => b.totalScore - a.totalScore)
+        .forEach((member, index) => {
+          exportData.push({
+            "Đội": member.memberName,
+            "Đơn vị": member.unit,
+            "Rank": index + 1,
+          });
+        });
+      exportData.push({});
+    });
 
-  const worksheet = XLSX.utils.json_to_sheet(exportData);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, "XepHangThanhVien");
-  XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
-};
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "XepHangThanhVien");
+    XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
+  };
   useEffect(() => {
     fetch("https://quizzserver-3ylm.onrender.com/api/scores")
       .then((res) => res.json())
