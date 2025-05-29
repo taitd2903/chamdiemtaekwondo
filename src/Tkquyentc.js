@@ -49,11 +49,7 @@ const RankingByMember = () => {
         setLoading(false);
       });
   }, []);
-
-  // Chỉ lấy teamId từ 101 đến 200 (ví dụ: bảng C, D,...)
   const filteredScores = scores.filter(score => score.teamId >= 101 && score.teamId <= 200);
-
-  // Tổng điểm theo memberId trong mỗi teamId
   const memberTotals = filteredScores.reduce((acc, curr) => {
     const key = `${curr.teamId}-${curr.memberId}`;
     if (!acc[key]) {
@@ -69,8 +65,6 @@ const RankingByMember = () => {
     acc[key].totalScore += curr.score;
     return acc;
   }, {});
-
-  // Nhóm theo bảng (teamId)
   const groupedByTeam = {};
   Object.values(memberTotals).forEach((item) => {
     if (!groupedByTeam[item.teamId]) {
@@ -113,15 +107,27 @@ const RankingByMember = () => {
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
   return (
-    <div style={{ maxWidth: 800, margin: "20px auto" }}>
-      <h2>Bảng xếp hạng thành viên theo từng bảng (teamId 101–200)</h2>
-      <Button
-        type="primary"
-        onClick={handleExportExcel}
-        style={{ marginBottom: 20 }}
-      >
-        📤 Xuất Excel
-      </Button>
+<div
+  style={{
+    maxWidth: 800,
+    margin: "110px auto 20px auto",
+    paddingTop: "20px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#fff",
+    textAlign: "center"
+  }}
+>
+  <h2 style={{  fontWeight: "bold", fontSize: "24px" }}>
+    🏆 Bảng xếp hạng các đội quyền tc
+  </h2>
+<Button
+  type="primary"
+  onClick={handleExportExcel}
+ style={{ marginBottom: 20, backgroundColor: "#083987", color: "white" }}
+>
+  📤 Xuất Excel
+</Button>
 
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members

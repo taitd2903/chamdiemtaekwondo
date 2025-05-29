@@ -187,8 +187,8 @@ const currentJudgeId = parseInt(giamdinh, 10);
     );
 
     return (
-      <div style={{ marginTop: 20 }}>
-        <h3>{teamName}</h3>
+      <div style={{ marginTop: 40 }}>
+        {/* <h3>{teamName}</h3> */}
         <Table
           columns={columns}
           dataSource={data}
@@ -208,7 +208,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
     <div style={{ padding: 20 }}>
       {/* <h2>Chấm điểm từng đội</h2> */}
 
-      <label>
+      {/* <label>
         Chọn bảng:&nbsp;
         <select
           value={selectedTeamId ?? ""}
@@ -222,7 +222,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
             </option>
           ))}
         </select>
-      </label>
+      </label> */}
 
       {selectedTeam ? (
         renderTeamScoring(selectedTeam)

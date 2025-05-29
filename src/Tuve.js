@@ -205,14 +205,20 @@ const currentJudgeId = parseInt(giamdinh, 10);
 
   return (
     <div style={{ padding: 20 }}>
-      {/* <h2>Chấm điểm từng đội</h2> */}
-
       <label>
-        Chọn bảng:&nbsp;
+        &nbsp;
         <select
           value={selectedTeamId ?? ""}
           onChange={(e) => setSelectedTeamId(e.target.value !== "" ? Number(e.target.value) : null)}
-          style={{ padding: 4, minWidth: 180 }}
+          style={{  padding: "8px 12px",
+      minWidth: 200,
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      backgroundColor: "#fff",
+      fontSize: "16px",
+      boxShadow: "0 1px 4px rgba(0, 0, 0, 0.05)",
+      outline: "none",
+      cursor: "pointer", }}
         >
           <option value="">-- Chọn một bảng --</option>
           {teamData.map((team) => (
@@ -226,7 +232,9 @@ const currentJudgeId = parseInt(giamdinh, 10);
       {selectedTeam ? (
         renderTeamScoring(selectedTeam)
       ) : (
-        <p style={{ marginTop: 20, fontStyle: "italic" }}>Vui lòng chọn Bảng để chấm điểm.</p>
+        <>
+        {/* <p style={{ marginTop: 20, fontStyle: "italic" }}>Vui lòng chọn Bảng để chấm điểm.</p> */}
+        </>
       )}
     </div>
   );

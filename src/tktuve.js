@@ -110,15 +110,28 @@ const RankingByMember = () => {
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
   return (
-    <div style={{ maxWidth: 800, margin: "20px auto" }}>
-      <h2>Bảng xếp hạng thành viên theo từng bảng (teamId 201–300)</h2>
+<div
+  style={{
+    maxWidth: 800,
+    margin: "110px auto 20px auto",
+    paddingTop: "20px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#fff",
+    textAlign: "center"
+  }}
+>
+  <h2 style={{  fontWeight: "bold", fontSize: "24px" }}>
+    🏆 Bảng xếp hạng các đội tự vệ
+  </h2>
 <Button
   type="primary"
   onClick={handleExportExcel}
-  style={{ marginBottom: 20 }}
+style={{ marginBottom: 20, backgroundColor: "#083987", color: "white" }}
 >
   📤 Xuất Excel
 </Button>
+
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
           .sort((a, b) => b.totalScore - a.totalScore)
@@ -126,14 +139,15 @@ const RankingByMember = () => {
             key: `${teamId}-${member.memberId}`,
             rank: index + 1,
             memberName: member.memberName,
-              unit: member.unit, 
+            unit: member.unit,
             totalScore: member.totalScore,
           }));
 
         return (
+
           <div key={teamId} style={{ marginBottom: 40 }}>
             <Text strong style={{ fontSize: 18 }}>
-              🏆 Bảng {teamData.teamName}
+              🏆 {teamData.teamName}
             </Text>
             <Table
               columns={columns}
