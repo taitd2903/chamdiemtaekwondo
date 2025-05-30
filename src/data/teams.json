@@ -4,8 +4,7 @@
     "teamName": "Bảng A",
     "members": [
       { "memberId": 0, "name": "Trường mầm non song ngữ Midori","unit":"Trường mầm non song ngữ Midori" },
-      { "memberId": 1, "name": "Taekwondo Quyết Tâm" ,"unit":"Taekwondo Quyết Tâm" },
-      { "memberId": 2, "name": "Đội oke" ,"unit":"Thân Tâm" }
+      { "memberId": 1, "name": "Taekwondo Quyết Tâm" ,"unit":"Taekwondo Quyết Tâm" }
     ]
   }
 ]
