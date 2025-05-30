@@ -6,6 +6,9 @@ main{
   margin-bottom: 0px !important;
   padding-bottom: 0px!important;
 }
+.ranking-container{
+  margin-top: 4% !important;
+}
 .background{
 
   position: fixed;    

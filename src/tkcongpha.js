@@ -141,24 +141,39 @@ const handleExportExcel = () => {
 
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
-  return (
-    <div style={{ 
-       maxWidth: 800,
-    margin: "110px auto 20px auto",
-    paddingTop: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    backgroundColor: "#fff",
-    textAlign: "center"
-      }}>
-      <h2>🏆Bảng xếp hạng công phá</h2>
-<Button
-  type="primary"
-  onClick={handleExportExcel}
-  style={{ marginBottom: 20, backgroundColor: "#083987", color: "white" }}
->
-  📤 Xuất Excel
-</Button>
+return (
+  <div className="ranking-container"
+    style={{
+      maxWidth: 800,
+      margin: "110px auto 20px auto",
+      paddingTop: "20px",
+      borderRadius: "10px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      backgroundColor: "#fff",
+      textAlign: "center",
+      height: "60vh", 
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+
+    <h2 style={{ marginBottom: 10 }}>🏆 Bảng xếp hạng công phá</h2>
+    <Button
+      type="primary"
+      onClick={handleExportExcel}
+      style={{ marginBottom: 20, margin: "0 auto", backgroundColor: "#083987", color: "white", maxWidth: "200px" }}
+    >
+      📤 Xuất Excel
+    </Button>
+
+    {/* Vùng cuộn nội dung bảng con */}
+    <div
+      style={{
+        overflowY: "auto",
+        padding: "0 10px",
+        flex: 1, // Để phần này chiếm toàn bộ phần còn lại của khung
+      }}
+    >
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
           .sort((a, b) => {
@@ -171,14 +186,14 @@ const handleExportExcel = () => {
             memberName: member.memberName,
             soVan: member.soVan,
             kyThuat: member.kyThuat,
-              unit: member.unit, 
+            unit: member.unit,
             totalScore: member.soVan + member.kyThuat,
           }));
 
         return (
           <div key={teamId} style={{ marginBottom: 40 }}>
             <Text strong style={{ fontSize: 18 }}>
-          🏆   {teamData.teamName}
+              🏆 {teamData.teamName}
             </Text>
             <Table
               columns={columns}
@@ -192,7 +207,9 @@ const handleExportExcel = () => {
         );
       })}
     </div>
-  );
+  </div>
+);
+
 };
 
 export default RankingByMember;

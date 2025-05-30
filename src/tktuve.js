@@ -109,29 +109,48 @@ const RankingByMember = () => {
 
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
-  return (
-<div
-  style={{
-    maxWidth: 800,
-    margin: "110px auto 20px auto",
-    paddingTop: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    backgroundColor: "#fff",
-    textAlign: "center"
-  }}
->
-  <h2 style={{  fontWeight: "bold", fontSize: "24px" }}>
-    🏆 Bảng xếp hạng các đội tự vệ
-  </h2>
-<Button
-  type="primary"
-  onClick={handleExportExcel}
-style={{ marginBottom: 20, backgroundColor: "#083987", color: "white" }}
->
-  📤 Xuất Excel
-</Button>
-
+return (
+  <div
+  className="ranking-container"
+    style={{
+      maxWidth: 800,
+      margin: "110px auto 20px auto",
+      borderRadius: "10px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      backgroundColor: "#fff",
+      textAlign: "center",
+      height: "60vh", 
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <div
+      style={{
+        position: "sticky",
+        top: 0,
+        backgroundColor: "#fff",
+        zIndex: 10,
+        paddingTop: "20px",
+      }}
+    >
+      <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>
+        🏆 Bảng xếp hạng các đội tự vệ
+      </h2>
+      <Button
+        type="primary"
+        onClick={handleExportExcel}
+      style={{ marginBottom: 20, margin: "0 auto", backgroundColor: "#083987", color: "white", maxWidth: "200px" }}
+      >
+        📤 Xuất Excel
+      </Button>
+    </div>
+    <div
+      style={{
+        overflowY: "auto",
+        padding: "0 20px",
+        flexGrow: 1,
+      }}
+    >
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
           .sort((a, b) => b.totalScore - a.totalScore)
@@ -144,7 +163,6 @@ style={{ marginBottom: 20, backgroundColor: "#083987", color: "white" }}
           }));
 
         return (
-
           <div key={teamId} style={{ marginBottom: 40 }}>
             <Text strong style={{ fontSize: 18 }}>
               🏆 {teamData.teamName}
@@ -161,7 +179,9 @@ style={{ marginBottom: 20, backgroundColor: "#083987", color: "white" }}
         );
       })}
     </div>
-  );
+  </div>
+);
+
 };
 
 export default RankingByMember;
