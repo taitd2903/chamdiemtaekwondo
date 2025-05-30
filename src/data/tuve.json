@@ -1,21 +1,20 @@
 [
   {
     "teamId": 201,
-    "teamName": "Bảng A",
+    "teamName": "Bảng 1",
     "members": [
-     { "memberId": 0, "name": "Phạm Văn D" ,"unit":"Thân Tâm" },
-      { "memberId": 1, "name": "Hoàng Thị E","unit":"Quyết Tâm" },
-      { "memberId": 2, "name": "Đặng Văn F","unit":"Quyết Tâm" }
+     { "memberId": 0, "name": "Team CLB Phoenix" ,"unit":"CLB Phoenix" },
+      { "memberId": 1, "name": "Team Trần Nguyễn Đức Tài","unit":"Trường mầm non song ngữ Midori" },
+      { "memberId": 2, "name": "Team Phí Minh Đăng","unit":"Trường Mầm non Hạnh Phúc" }
     ]
   },
   {
     "teamId": 202,
-    "teamName": "Bảng B",
+    "teamName": "Bảng 2",
     "members": [
-      { "memberId": 0, "name": "Phạm Văn D","unit":"Quyết Tâm" },
-      { "memberId": 1, "name": "Hoàng Thị E","unit":"Quyết Tâm" },
-      { "memberId": 2, "name": "Đặng Văn F","unit":"Thân Tâm" },
-      { "memberId": 3, "name": "Lý Thị G", "unit":"Quyết Tâm" }
+      { "memberId": 0, "name": "Team Đinh Minh Khôi","unit":"Trường mầm non song ngữ Midori" },
+      { "memberId": 1, "name": "Team Phạm Nguyễn Thu Minh","unit":"Trường Mầm non Hạnh Phúc" },
+      { "memberId": 2, "name": "Team Vũ Hoàng Linh","unit":"Trường mầm non song ngữ Midori" }
     ]
   }
 ]

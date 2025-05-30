@@ -3,19 +3,9 @@
     "teamId": 0,
     "teamName": "Bảng A",
     "members": [
-      { "memberId": 0, "name": "Đội ngầu bá cháy","unit":"Thân Tâm" },
-      { "memberId": 1, "name": "Đội vip" ,"unit":"Thân Tâm" },
+      { "memberId": 0, "name": "Trường mầm non song ngữ Midori","unit":"Trường mầm non song ngữ Midori" },
+      { "memberId": 1, "name": "Taekwondo Quyết Tâm" ,"unit":"Taekwondo Quyết Tâm" },
       { "memberId": 2, "name": "Đội oke" ,"unit":"Thân Tâm" }
-    ]
-  },
-  {
-    "teamId": 1,
-    "teamName": "Bảng B",
-    "members": [
-     { "memberId": 0, "name": "Đội ngầu bá cháy" ,"unit":"Thân Tâm" },
-      { "memberId": 1, "name": "Đội vip" ,"unit":"Thân Tâm" },
-      { "memberId": 2, "name": "Đội oke" ,"unit":"Thân Tâm" },
-      { "memberId": 3, "name": "Đội siêu đỉnh" ,"unit":"Thân Tâm" }
     ]
   }
 ]

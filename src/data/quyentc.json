@@ -1,21 +1,545 @@
 [
   {
     "teamId": 101,
-    "teamName": "Bảng A",
+    "teamName": "Bảng 1",
     "members": [
-     { "memberId": 0, "name": "Phạm Văn D" ,"unit":"Thân Tâm" },
-      { "memberId": 1, "name": "Hoàng Thị E","unit":"Thân Tâm" },
-      { "memberId": 2, "name": "Đặng Văn F" ,"unit":"Thân Tâm"}
+      {
+        "memberId": 0,
+        "name": "YOON HA JIN",
+        "unit": "CLB Hwarang Taekwondo"
+      },
+      {
+        "memberId": 1,
+        "name": "Đặng Trần Bảo Quân",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 2,
+        "name": "Đỗ Nguyễn Anh Khoa",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 3,
+        "name": "Vũ Duy Anh",
+        "unit": "Nori Park Taekwondo"
+      }
     ]
   },
   {
     "teamId": 102,
-    "teamName": "Bảng B",
+    "teamName": "Bảng 2",
     "members": [
-      { "memberId": 0, "name": "Phạm Văn D","unit":"Thân Tâm" },
-      { "memberId": 1, "name": "Hoàng Thị E","unit":"Thân Tâm" },
-      { "memberId": 2, "name": "Đặng Văn F","unit":"Thân Tâm" },
-      { "memberId": 3, "name": "Lý Thị G","unit":"Thân Tâm" }
+      {
+        "memberId": 4,
+        "name": "Choi Yoon Ho",
+        "unit": "CLB Hwarang Taekwondo"
+      },
+      {
+        "memberId": 5,
+        "name": "Nguyễn Minh Quân",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 6,
+        "name": "Vũ Đức Minh (1)",
+        "unit": "Nori Park Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 103,
+    "teamName": "Bảng 3",
+    "members": [
+      {
+        "memberId": 7,
+        "name": "Vũ Đức Minh",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 8,
+        "name": "Đỗ An Phúc",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 9,
+        "name": "Trần Khang Nguyên",
+        "unit": "Nori Park Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 104,
+    "teamName": "Bảng 4",
+    "members": [
+      {
+        "memberId": 10,
+        "name": "SEO YI JUN",
+        "unit": "CLB Hwarang Taekwondo"
+      },
+      {
+        "memberId": 11,
+        "name": "Hoàng Xuân Trường",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 12,
+        "name": "Đặng Đức Minh",
+        "unit": "Nori Park Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 105,
+    "teamName": "Bảng 5",
+    "members": [
+      {
+        "memberId": 13,
+        "name": "Nguyễn Quỳnh Thư",
+        "unit": "Nori Park Taekwondo"
+      },
+      {
+        "memberId": 14,
+        "name": "Phạm Phương Linh",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 15,
+        "name": "KIM HA JIN",
+        "unit": "CLB Hwarang Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 106,
+    "teamName": "Bảng 6",
+    "members": [
+      {
+        "memberId": 16,
+        "name": "KIM SEO A",
+        "unit": "CLB Hwarang Taekwondo"
+      },
+      {
+        "memberId": 17,
+        "name": "Lê Quỳnh Xuyến Chi",
+        "unit": "Nori Park Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 107,
+    "teamName": "Bảng 7",
+    "members": [
+      {
+        "memberId": 18,
+        "name": "Trần Hà My",
+        "unit": "CLB Taekwondo Cầu Giấy"
+      },
+      {
+        "memberId": 19,
+        "name": "Trương Minh Thảo Phương",
+        "unit": "Taekwondo Quyết Tâm"
+      },
+      {
+        "memberId": 20,
+        "name": "Phạm Vũ Huyền My",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 21,
+        "name": "Đỗ An Nhiên",
+        "unit": "CLB Phoenix"
+      }
+    ]
+  },
+  {
+    "teamId": 108,
+    "teamName": "Bảng 8",
+    "members": [
+      {
+        "memberId": 22,
+        "name": "Thiều Nguyễn Khánh Phương",
+        "unit": "Nori Park Taekwondo"
+      },
+      {
+        "memberId": 23,
+        "name": "Phạm Tuệ Lâm",
+        "unit": "Taekwondo Quyết Tâm"
+      },
+      {
+        "memberId": 24,
+        "name": "Nguyễn Ngọc Linh San",
+        "unit": "Bắc Từ Liêm"
+      },
+      {
+        "memberId": 25,
+        "name": "Phạm Vũ An Trúc",
+        "unit": "CLB Taekwondo Xuân Trường"
+      }
+    ]
+  },
+  {
+    "teamId": 109,
+    "teamName": "Bảng 9",
+    "members": [
+      {
+        "memberId": 26,
+        "name": "Nguyễn Thị Huyền Anh",
+        "unit": "CLB Taekwondo Ngôi Sao"
+      },
+      {
+        "memberId": 27,
+        "name": "Nguyễn Khánh Thy",
+        "unit": "Taekwondo Quyết Tâm"
+      },
+      {
+        "memberId": 28,
+        "name": "Nguyễn Phương Chi",
+        "unit": "CLB Taekwondo Phúc Yên"
+      },
+      {
+        "memberId": 29,
+        "name": "Trần Thanh Tú",
+        "unit": "Nori Park Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 110,
+    "teamName": "Bảng 10",
+    "members": [
+      {
+        "memberId": 30,
+        "name": "Phạm Khánh My",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 31,
+        "name": "Bùi Vũ Tuệ Minh",
+        "unit": "Taekwondo Quyết Tâm"
+      },
+      {
+        "memberId": 32,
+        "name": "Phùng Ngọc Anh",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 33,
+        "name": "Ngô Phương Mai",
+        "unit": "Võ đường Thần Vũ"
+      }
+    ]
+  },
+  {
+    "teamId": 111,
+    "teamName": "Bảng 11",
+    "members": [
+      {
+        "memberId": 34,
+        "name": "Trần Phương Thảo",
+        "unit": "Nori Park Taekwondo"
+      },
+      {
+        "memberId": 35,
+        "name": "Nguyễn Vân Linh",
+        "unit": "Taekwondo Quyết Tâm"
+      }
+    ]
+  },
+  {
+    "teamId": 112,
+    "teamName": "Bảng 12",
+    "members": [
+      {
+        "memberId": 36,
+        "name": "Nguyễn Hoàng Anh Thư",
+        "unit": "CLB Rùa Team - Taekwondo Đan Phượng"
+      },
+      {
+        "memberId": 37,
+        "name": "Phạm Trâm Anh",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 38,
+        "name": "Lê Thị Kim Ngân",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 39,
+        "name": "Phạm Diệu Linh",
+        "unit": "CLB Taekwondo Xuân Trường"
+      }
+    ]
+  },
+  {
+    "teamId": 113,
+    "teamName": "Bảng 13",
+    "members": [
+      {
+        "memberId": 40,
+        "name": "Đoàn Phúc Lâm",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 41,
+        "name": "Vũ Phương nguyên",
+        "unit": "CLB Taekwondo Kỳ Bá"
+      },
+      {
+        "memberId": 42,
+        "name": "Nguyễn Quốc Bảo",
+        "unit": "CLB Taekwondo Ngôi Sao"
+      },
+      {
+        "memberId": 43,
+        "name": "Lê Gia Bảo",
+        "unit": "CLB Taekwondo Xuân Trường"
+      }
+    ]
+  },
+  {
+    "teamId": 114,
+    "teamName": "Bảng 14",
+    "members": [
+      {
+        "memberId": 44,
+        "name": "Nguyễn Minh Đức",
+        "unit": "Team Taekwondo Bình Phú"
+      },
+      {
+        "memberId": 45,
+        "name": "Phạm Gia Bảo",
+        "unit": "Taekwondo Quyết Tâm"
+      },
+      {
+        "memberId": 46,
+        "name": "Lê Đức Đạt",
+        "unit": "VĨNH PHÚC"
+      },
+      {
+        "memberId": 47,
+        "name": "Lưu Quốc An",
+        "unit": "CLB Phoenix"
+      }
+    ]
+  },
+  {
+    "teamId": 115,
+    "teamName": "Bảng 15",
+    "members": [
+      {
+        "memberId": 48,
+        "name": "Nguyễn Minh Trung",
+        "unit": "CLB Rùa Team - Taekwondo Đan Phượng"
+      },
+      {
+        "memberId": 49,
+        "name": "Đặng Nguyễn Trường Hoàng",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 50,
+        "name": "Phạm Đức Tiến",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 51,
+        "name": "Nguyễn Gia Bảo (1)",
+        "unit": "VĨNH PHÚC"
+      }
+    ]
+  },
+  {
+    "teamId": 116,
+    "teamName": "Bảng 16",
+    "members": [
+      {
+        "memberId": 52,
+        "name": "Nguyễn Vũ Minh Khang",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 53,
+        "name": "Hà Anh Đức",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 54,
+        "name": "Nguyễn Trường Vinh",
+        "unit": "CLB Taekwondo Ngôi Sao"
+      },
+      {
+        "memberId": 55,
+        "name": "Trương Việt Quang",
+        "unit": "Team Taekwondo Bình Phú"
+      }
+    ]
+  },
+  {
+    "teamId": 117,
+    "teamName": "Bảng 17",
+    "members": [
+      {
+        "memberId": 56,
+        "name": "Mai Hữu Tuệ",
+        "unit": "CLB Phoenix"
+      },
+      {
+        "memberId": 57,
+        "name": "Trần Tuấn Sang",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 58,
+        "name": "cao đức mạnh",
+        "unit": "CLB Taekwondo Kỳ Bá"
+      },
+      {
+        "memberId": 59,
+        "name": "Nguyễn Nhật An Bình",
+        "unit": "Taekwondo Quyết Tâm"
+      }
+    ]
+  },
+  {
+    "teamId": 118,
+    "teamName": "Bảng 18",
+    "members": [
+      {
+        "memberId": 60,
+        "name": "Nguyễn Phúc Lâm",
+        "unit": "CLB Taekwondo Phúc Yên"
+      },
+      {
+        "memberId": 61,
+        "name": "Phạm Trường Giang",
+        "unit": "CLB Taekwondo Kỳ Bá"
+      },
+      {
+        "memberId": 62,
+        "name": "Nguyễn Ngọc Anh Đăng",
+        "unit": "VĨNH PHÚC"
+      },
+      {
+        "memberId": 63,
+        "name": "Phạm Thanh Phong",
+        "unit": "CLB Taekwondo Xuân Trường"
+      }
+    ]
+  },
+  {
+    "teamId": 119,
+    "teamName": "Bảng 19",
+    "members": [
+      {
+        "memberId": 64,
+        "name": "Nguyễn Hoàng Huỳnh Anh",
+        "unit": "CLB Taekwondo Ngôi Sao"
+      },
+      {
+        "memberId": 65,
+        "name": "Đặng Trần Nhật Anh",
+        "unit": "Hana Taekwondo Academy"
+      },
+      {
+        "memberId": 66,
+        "name": "Nguyễn Văn An",
+        "unit": "VĨNH PHÚC"
+      },
+      {
+        "memberId": 67,
+        "name": "Nguyễn Trung Anh",
+        "unit": "CLB Taekwondo Phúc Yên"
+      }
+    ]
+  },
+  {
+    "teamId": 120,
+    "teamName": "Bảng 20",
+    "members": [
+      {
+        "memberId": 68,
+        "name": "Nguyễn Hoàng Hải Anh",
+        "unit": "CLB Taekwondo Ngôi Sao"
+      },
+      {
+        "memberId": 69,
+        "name": "Nguyễn Hoàng Hiệp",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 70,
+        "name": "Phạm Nhật Minh",
+        "unit": "Taekwondo Quyết Tâm"
+      }
+    ]
+  },
+  {
+    "teamId": 121,
+    "teamName": "Bảng 21",
+    "members": [
+      {
+        "memberId": 71,
+        "name": "Nguyễn Anh Nguyên Khánh",
+        "unit": "Team Taekwondo Bình Phú"
+      },
+      {
+        "memberId": 72,
+        "name": "Vũ Đức Thiện",
+        "unit": "VĨNH PHÚC"
+      },
+      {
+        "memberId": 73,
+        "name": "Lê Nhật Anh",
+        "unit": "Nori Park Taekwondo"
+      }
+    ]
+  },
+  {
+    "teamId": 122,
+    "teamName": "Bảng 22",
+    "members": [
+      {
+        "memberId": 74,
+        "name": "Nguyễn Anh Nguyên Khải",
+        "unit": "Team Taekwondo Bình Phú"
+      },
+      {
+        "memberId": 75,
+        "name": "Nguyễn Anh Cường",
+        "unit": "VĨNH PHÚC"
+      },
+      {
+        "memberId": 76,
+        "name": "Phạm Quốc Hưng",
+        "unit": "Hana Taekwondo Academy"
+      }
+    ]
+  },
+  {
+    "teamId": 123,
+    "teamName": "Bảng 23",
+    "members": [
+      {
+        "memberId": 77,
+        "name": "Đặng Huy Hoàng",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 78,
+        "name": "Lê Minh Thuận",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 79,
+        "name": "Phạm Trường An",
+        "unit": "CLB Taekwondo Xuân Trường"
+      },
+      {
+        "memberId": 80,
+        "name": "Hoàng Tuấn Kiệt",
+        "unit": "Võ đường Thần Vũ"
+      }
     ]
   }
 ]
