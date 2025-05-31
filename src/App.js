@@ -50,7 +50,7 @@ const App = () => {
     { key: "/tktuve", label: "Thống kê tự vệ" },
     { key: `/congpha/${giamdinh}`, label: "Công phá" },
     { key: "/tkcongpha", label: "Thống kê công phá" },
-    { key: "/xoadiem", label: "Xoá điểm", danger: true },
+    // { key: "/xoadiem", label: "Xoá điểm", danger: true },
   ];
 
   const selectedKey = menuItems.find(({ key }) =>
