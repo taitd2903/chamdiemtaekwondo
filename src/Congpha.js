@@ -123,7 +123,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
           return (
             <>
               <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
-                {[1, 2, 3].map((judgeId) => (
+                {[1 ].map((judgeId) => (
              <InputNumber
   key={judgeId}
   min={0}
