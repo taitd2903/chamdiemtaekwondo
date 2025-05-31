@@ -2,68 +2,86 @@ import React, { useEffect, useState } from "react";
 import { Table, Typography, Spin } from "antd";
 import * as XLSX from "xlsx";
 import { Button } from "antd";
+import './RankingByMember.css'; 
+import io from "socket.io-client";
 const { Text } = Typography;
-
 const RankingByMember = () => {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
-const handleExportExcel = () => {
-  const exportData = [];
-
-  Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
-    // Thêm tiêu đề bảng
-    exportData.push({
-      "Thành viên": `💥 Bảng ${teamData.teamName}`,
-      "Đơn vị": "",
-      // "Số ván": "",
-      // "Kỹ thuật": "",
-      // "Tổng điểm": "",
-      "Rank": "",
+  const handleExportExcel = () => {
+    const exportData = [];
+    Object.entries(groupedByTeam).forEach(([teamId, teamData]) => {
+      exportData.push({
+        "Thành viên": `💥 Bảng ${teamData.teamName}`,
+        "Đơn vị": "",
+        "Rank": "",
+      });
+      teamData.members
+        .sort((a, b) => {
+          if (b.soVan !== a.soVan) return b.soVan - a.soVan;
+          return b.kyThuat - a.kyThuat;
+        })
+        .forEach((member, index) => {
+          exportData.push({
+            "Thành viên": member.memberName,
+            "Đơn vị": member.unit,
+            "Rank": index + 1,
+          });
+        });
+      exportData.push({});
     });
 
-    // Thêm từng thành viên đã sắp xếp
-    teamData.members
-      .sort((a, b) => {
-        if (b.soVan !== a.soVan) return b.soVan - a.soVan;
-        return b.kyThuat - a.kyThuat;
-      })
-      .forEach((member, index) => {
-        exportData.push({
-          "Thành viên": member.memberName,
-          "Đơn vị": member.unit,
-          // "Số ván": member.soVan,
-          // "Kỹ thuật": member.kyThuat,
-          // "Tổng điểm": member.soVan + member.kyThuat,
-           "Rank": index + 1,
-        });
-      });
-
-    // Dòng trống để phân cách giữa các bảng
-    exportData.push({});
-  });
-
-  const worksheet = XLSX.utils.json_to_sheet(exportData);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, "BangXepHang");
-  XLSX.writeFile(workbook, "XepHang_CongPha.xlsx");
-};
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "BangXepHang");
+    XLSX.writeFile(workbook, "XepHang_CongPha.xlsx");
+  };
 
   useEffect(() => {
+    const socket = io("https://quizzserver-3ylm.onrender.com");
     fetch("https://quizzserver-3ylm.onrender.com/api/scores")
       .then((res) => res.json())
       .then((data) => {
         setScores(data);
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Lỗi lấy điểm:", err);
-        setLoading(false);
       });
+    socket.on("update_score", (data) => {
+      setScores((prevScores) => {
+        const updated = [...prevScores];
+        const index = updated.findIndex(
+          (entry) =>
+            entry.teamId === data.teamId &&
+            entry.memberId === data.memberId &&
+            entry.judgeId === data.judgeId &&
+            entry.criteria === data.criteria &&
+            entry.unit === data.unit
+        );
+
+        if (index !== -1) {
+          updated[index].score = data.score;
+        } else {
+          updated.push({
+            teamId: data.teamId,
+            teamName: data.teamName,
+            memberId: data.memberId,
+            memberName: data.memberName,
+            unit: data.unit,
+            judgeId: data.judgeId,
+            score: data.score,
+            criteria: data.criteria,
+          });
+        }
+
+        return updated;
+      });
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   const filteredScores = scores.filter(score => score.teamId >= 300 && score.teamId <= 400);
-
-  // Gom điểm theo từng thành viên
   const memberTotals = filteredScores.reduce((acc, curr) => {
     const key = `${curr.teamId}-${curr.memberId}`;
 
@@ -73,7 +91,7 @@ const handleExportExcel = () => {
         teamName: curr.teamName,
         memberId: curr.memberId,
         memberName: curr.memberName,
-         unit: curr.unit || "", 
+        unit: curr.unit || "",
         soVan: 0,
         kyThuat: 0,
       };
@@ -100,87 +118,102 @@ const handleExportExcel = () => {
     groupedByTeam[item.teamId].members.push(item);
   });
 
-  const columns = [
-    {
-      title: "Xếp hạng",
-      dataIndex: "rank",
-      key: "rank",
-      width: 80,
+ const columns = [
+  {
+    title: "Xếp hạng",
+    dataIndex: "rank",
+    key: "rank",
+    width: 100,
+    render: (text, record) => {
+      let medal = null;
+      let color = "#000"; // Mặc định
+
+      if (record.rank === 1) {
+        medal = "🥇";
+        color = "#FFD700"; // Vàng
+      } else if (record.rank === 2) {
+        medal = "🥈";
+        color = "#C0C0C0"; // Bạc
+      } else if (record.rank === 3) {
+        medal = "🥉";
+        color = "#CD7F32"; // Đồng
+      }
+      else if (record.rank === 4) {
+        medal = "🥉";
+        color = "#CD7F32"; // Đồng
+      }
+
+      return (
+        <span style={{ color, fontWeight: "bold" }}>
+          {medal ? `${medal} ${record.rank}` : record.rank}
+        </span>
+      );
     },
-    {
-      title: "Thành viên",
-      dataIndex: "memberName",
-      key: "memberName",
-      width: 180,
-    },
-      {
-      title: "Đơn vị",
-      dataIndex: "unit",
-      key: "unit",
-      width: 120,
-    },
-    {
-      title: "Số ván",
-      dataIndex: "soVan",
-      key: "soVan",
-      width: 100,
-    },
-    {
-      title: "Kỹ Thuật",
-      dataIndex: "kyThuat",
-      key: "kyThuat",
-      width: 100,
-    },
-    {
-      title: "Tổng điểm",
-      dataIndex: "totalScore",
-      key: "totalScore",
-      width: 120,
-    },
-  ];
+  },
+  {
+    title: "Thành viên",
+    dataIndex: "memberName",
+    key: "memberName",
+    width: 180,
+  },
+  {
+    title: "Đơn vị",
+    dataIndex: "unit",
+    key: "unit",
+    width: 120,
+  },
+  {
+    title: "Số ván",
+    dataIndex: "soVan",
+    key: "soVan",
+    width: 100,
+  },
+  {
+    title: "Kỹ Thuật",
+    dataIndex: "kyThuat",
+    key: "kyThuat",
+    width: 100,
+  },
+  {
+    title: "Tổng điểm",
+    dataIndex: "totalScore",
+    key: "totalScore",
+    width: 120,
+  },
+];
+
 
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
+
+
 return (
-  <div className="ranking-container"
-    style={{
-      maxWidth: 800,
-      margin: "110px auto 20px auto",
-      paddingTop: "20px",
-      borderRadius: "10px",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      backgroundColor: "#fff",
-      textAlign: "center",
-      height: "60vh", 
-      display: "flex",
-      flexDirection: "column",
-    }}
-  >
-
-    <h2 style={{ marginBottom: 10 }}>🏆 Bảng xếp hạng công phá</h2>
-    <Button
-      type="primary"
-      onClick={handleExportExcel}
-      style={{ marginBottom: 20, margin: "0 auto", backgroundColor: "#083987", color: "white", maxWidth: "200px" }}
-    >
-      📤 Xuất Excel
-    </Button>
-
-    {/* Vùng cuộn nội dung bảng con */}
-    <div
-      style={{
-        overflowY: "auto",
-        padding: "0 10px",
-        flex: 1, // Để phần này chiếm toàn bộ phần còn lại của khung
-      }}
-    >
+  <div className="fullscreen-ranking">
+    <div className="ranking-header">
+      <h2 style={{ fontWeight: "bold", fontSize: "40px" }}>
+        🏆 Bảng xếp hạng công phá
+      </h2>
+      <Button
+        type="primary"
+        onClick={handleExportExcel}
+        style={{
+          marginTop: 10,
+          backgroundColor: "#083987",
+          color: "white",
+          maxWidth: "200px",
+        }}
+      >
+        📤 Xuất Excel
+      </Button>
+    </div>
+    <div className="ranking-content">
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
           .sort((a, b) => {
             if (b.soVan !== a.soVan) return b.soVan - a.soVan;
             return b.kyThuat - a.kyThuat;
           })
-          .map((member, index) => ({
+           .map((member, index) => ({
             key: `${teamId}-${member.memberId}`,
             rank: index + 1,
             memberName: member.memberName,
@@ -192,7 +225,7 @@ return (
 
         return (
           <div key={teamId} style={{ marginBottom: 40 }}>
-            <Text strong style={{ fontSize: 18 }}>
+            <Text strong style={{ fontSize: 38, textAlign: "center" }}>
               🏆 {teamData.teamName}
             </Text>
             <Table
@@ -209,6 +242,7 @@ return (
     </div>
   </div>
 );
+
 
 };
 

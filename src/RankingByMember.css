@@ -1,0 +1,32 @@
+.fullscreen-ranking {
+  position: fixed !important;
+  top: 50px;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: #ffffff;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+.ant-table-cell{
+    font-size: 32px !important;
+    font-weight: 600;
+}
+.fullscreen-ranking .ranking-header {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 10;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fullscreen-ranking .ranking-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 20px;
+}

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Table, Typography, Spin } from "antd";
 import * as XLSX from "xlsx";
 import { Button } from "antd";
+import io from "socket.io-client";
+import "./RankingByMember.css";
+
 const { Text } = Typography;
 
 const RankingByMember = () => {
@@ -34,18 +37,49 @@ const RankingByMember = () => {
     XLSX.utils.book_append_sheet(workbook, worksheet, "XepHangThanhVien");
     XLSX.writeFile(workbook, "XepHang_ThanhVien.xlsx");
   };
-  useEffect(() => {
-    fetch("https://quizzserver-3ylm.onrender.com/api/scores")
-      .then((res) => res.json())
-      .then((data) => {
-        setScores(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Lỗi lấy điểm:", err);
-        setLoading(false);
-      });
-  }, []);
+useEffect(() => {
+  const socket = io("https://quizzserver-3ylm.onrender.com");
+  fetch("https://quizzserver-3ylm.onrender.com/api/scores")
+    .then((res) => res.json())
+    .then((data) => {
+      setScores(data);
+      setLoading(false);
+    });
+  socket.on("update_score", (data) => {
+    setScores((prevScores) => {
+      const updated = [...prevScores];
+      const index = updated.findIndex(
+        (entry) =>
+          entry.teamId === data.teamId &&
+          entry.memberId === data.memberId &&
+          entry.judgeId === data.judgeId &&
+          entry.criteria === data.criteria &&
+          entry.unit === data.unit
+      );
+
+      if (index !== -1) {
+        updated[index].score = data.score;
+      } else {
+        updated.push({
+          teamId: data.teamId,
+          teamName: data.teamName,
+          memberId: data.memberId,
+          memberName: data.memberName,
+          unit: data.unit,
+          judgeId: data.judgeId,
+          score: data.score,
+          criteria: data.criteria,
+        });
+      }
+
+      return updated;
+    });
+  });
+
+  return () => {
+    socket.disconnect(); 
+  };
+}, []);
 
   // Lọc chỉ bảng trong khoảng teamId từ 201 đến 300
   const filteredScores = scores.filter(score => score.teamId >= 201 && score.teamId <= 300);
@@ -80,6 +114,37 @@ const RankingByMember = () => {
   });
 
   const columns = [
+     {
+    title: "Xếp hạng",
+    dataIndex: "rank",
+    key: "rank",
+    width: 100,
+    render: (text, record) => {
+      let medal = null;
+      let color = "#000"; // Mặc định
+
+      if (record.rank === 1) {
+        medal = "🥇";
+        color = "#FFD700"; // Vàng
+      } else if (record.rank === 2) {
+        medal = "🥈";
+        color = "#C0C0C0"; // Bạc
+      } else if (record.rank === 3) {
+        medal = "🥉";
+        color = "#CD7F32"; // Đồng
+      }
+      else if (record.rank === 4) {
+        medal = "🥉";
+        color = "#CD7F32"; // Đồng
+      }
+
+      return (
+        <span style={{ color, fontWeight: "bold" }}>
+          {medal ? `${medal} ${record.rank}` : record.rank}
+        </span>
+      );
+    },
+  },
     {
       title: "Xếp hạng",
       dataIndex: "rank",
@@ -110,47 +175,25 @@ const RankingByMember = () => {
   if (loading) return <Spin tip="Đang tải dữ liệu điểm..." />;
 
 return (
-  <div
-  className="ranking-container"
-    style={{
-      maxWidth: 800,
-      margin: "110px auto 20px auto",
-      borderRadius: "10px",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      backgroundColor: "#fff",
-      textAlign: "center",
-      height: "60vh", 
-      display: "flex",
-      flexDirection: "column",
-    }}
-  >
-    <div
-      style={{
-        position: "sticky",
-        top: 0,
-        backgroundColor: "#fff",
-        zIndex: 10,
-        paddingTop: "20px",
-      }}
-    >
-      <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>
+  <div className="fullscreen-ranking">
+    <div className="ranking-header">
+      <h2 style={{ fontWeight: "bold", fontSize: "40px" }}>
         🏆 Bảng xếp hạng các đội tự vệ
       </h2>
       <Button
         type="primary"
         onClick={handleExportExcel}
-      style={{ marginBottom: 20, margin: "0 auto", backgroundColor: "#083987", color: "white", maxWidth: "200px" }}
+        style={{
+          marginTop: 10,
+          backgroundColor: "#083987",
+          color: "white",
+          maxWidth: "200px",
+        }}
       >
         📤 Xuất Excel
       </Button>
     </div>
-    <div
-      style={{
-        overflowY: "auto",
-        padding: "0 20px",
-        flexGrow: 1,
-      }}
-    >
+    <div className="ranking-content">
       {Object.entries(groupedByTeam).map(([teamId, teamData]) => {
         const sortedMembers = teamData.members
           .sort((a, b) => b.totalScore - a.totalScore)
@@ -164,7 +207,7 @@ return (
 
         return (
           <div key={teamId} style={{ marginBottom: 40 }}>
-            <Text strong style={{ fontSize: 18 }}>
+            <Text strong style={{ fontSize: 38 }}>
               🏆 {teamData.teamName}
             </Text>
             <Table
@@ -181,6 +224,7 @@ return (
     </div>
   </div>
 );
+
 
 };
 

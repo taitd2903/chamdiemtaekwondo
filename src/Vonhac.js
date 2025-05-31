@@ -187,7 +187,7 @@ const currentJudgeId = parseInt(giamdinh, 10);
     );
 
     return (
-      <div style={{ marginTop: 40 }}>
+    <div style={{ marginTop: -170 }}>
         {/* <h3>{teamName}</h3> */}
         <Table
           columns={columns}
