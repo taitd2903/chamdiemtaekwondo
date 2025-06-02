@@ -5,8 +5,8 @@
     "members": [
      { "memberId": 0, "name": "Team CLB Phoenix" ,"unit":"CLB Phoenix" },
       { "memberId": 1, "name": "Team Trần Nguyễn Đức Tài","unit":"Trường mầm non song ngữ Midori" },
-      { "memberId": 1, "name": "Team Đinh Minh Khôi","unit":"Trường mầm non song ngữ Midori" },
-      { "memberId": 1, "name": "Team Vũ Hoàng Linh","unit":"Trường mầm non song ngữ Midori" }
+      { "memberId": 2, "name": "Team Đinh Minh Khôi","unit":"Trường mầm non song ngữ Midori" },
+      { "memberId": 3, "name": "Team Vũ Hoàng Linh","unit":"Trường mầm non song ngữ Midori" }
     ]
   }
 ]
